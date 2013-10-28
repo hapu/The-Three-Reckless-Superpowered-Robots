@@ -1,16 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Buscando Empleado</title>
+<title>Evaluando Propuesta</title>
 </head>
 <body>
 	<form method="post" action="">
-		<select name="empleado">
+		<select name="empleado" size="5">
 			<option value="000">Grillo Lennon</option>
 			<option value="001">Omar McCartney</option>
 			<option value="010">Leopoldo Harrison</option>
 			<option value="011">Bere Star</option>
-		</select> <input type="hidden" name="etapa" value="3" />
+		</select>
+		<select name="propuesta" size="5">
+			<option value="000">Grillo Lennon</option>
+			<option value="001">Omar McCartney</option>
+			<option value="010">Leopoldo Harrison</option>
+			<option value="011">Bere Star</option>
+		</select>
+		<input type="hidden" name="etapa" value="3" />
 		<p>
 			<label><input type="submit" value="Enviar" /> </label>
 		</p>
