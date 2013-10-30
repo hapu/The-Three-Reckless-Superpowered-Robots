@@ -22,6 +22,7 @@ switch ($_POST['etapa'])
 		<form method="post" action="">
 		<select name="empleado" size="5">';
 		foreach ($base_de_datos as $key => $value) {
+
 			echo '<option value="' . $key . '">'. $value .'</option>';
 		}
 
