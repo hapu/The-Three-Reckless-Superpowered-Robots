@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Organigrama</title>
+</head>
+<body>
+	<details id="detailsPuesto1" open>
+		<summary id="SummaryPuesto1">
+			<label contenteditable="true" id='LabelPuesto1'>lbe</label>
+			<button id="AgregarSubordinado" onclick='reply_click(this);'>+</button>
+			<button id="Eliminar">-</button>
+		</summary>
+	</details>
+	<script>
+	/**
+	 * [reply_click Crea un sum]
+	 * @param  {Buttton} clicked_id [boton en el que se da click]
+	 */
+		function reply_click(clicked_id)
+		{
+			var summary=document.createElement('summary');
+			var id=(ObtenerId(clicked_id.parentNode.id)+1).toString();
+			summary.id="SummaryPuesto"+id;
+			crearEvento(summary,"click",function(){alert(this.innerHTML);});
+			summary.innerHTML="<label contenteditable='true' id='LabelPuesto"+id+"'>Puesto</label><button id='AgregarSubordinado' onclick='reply_click(this);'>+</button><button id='Eliminar'>-</button>";
+			var details=document.createElement('details');
+			details.id="detailsPuesto"+id;
+			details.style.marginLeft="25px";
+			details.appendChild(summary);
+			clicked_id.parentNode.parentNode.appendChild(details);
+		}
+
+		function crearEvento(elemento, evento, funcion){
+			if (elemento.addEventListener){
+				elemento.addEventListener(evento, funcion, false);
+			}else{
+				elemento.attachEvent("on" + evento, funcion);
+			}
+		}
+		/**
+		 * [ObtenerId Obtiene el numero pasado para saber el ID]
+		 * @param {String} id [el padre Id]
+		 * @return {integer}   [Id del Padre en entero]
+		 */
+		function ObtenerId(id)
+		{
+			return parseInt(id.substr(id.length-1,1));
+		}
+	</script>
+</body>
+</html>

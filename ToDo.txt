@@ -1,0 +1,13 @@
+Cosas Por hacer
+Interfaz
+Empleados
+Organigrama
+Insidencias
+
+Base de datos
+
+-Imprimir Arbol
+-Modificar Arbol
+Login
+
+Comprobar Que no halla colisiones en las fechas
