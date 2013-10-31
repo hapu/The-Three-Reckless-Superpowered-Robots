@@ -2,92 +2,137 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL';
 
-CREATE  TABLE IF NOT EXISTS `CFE`.`Empleado` (
-  `idEmpleado` INT(11) NOT NULL COMMENT 'Clave del Empleado' ,
-  `NombreEmpleado` VARCHAR(45) NOT NULL COMMENT 'Nombre del Empleado' ,
-  `Puesto_idPuesto` INT(11) NOT NULL ,
-  PRIMARY KEY (`idEmpleado`) ,
-  INDEX `fk_Empleado_Puesto1` (`Puesto_idPuesto` ASC) ,
-  CONSTRAINT `fk_Empleado_Puesto1`
-    FOREIGN KEY (`Puesto_idPuesto` )
-    REFERENCES `CFE`.`Puesto` (`idPuesto` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = latin1
-COLLATE = latin1_swedish_ci;
+DROP SCHEMA IF EXISTS `CFE` ;
+CREATE SCHEMA IF NOT EXISTS `CFE` DEFAULT CHARACTER SET latin1 ;
+SHOW WARNINGS;
+USE `CFE` ;
 
+-- -----------------------------------------------------
+-- Table `CFE`.`Puesto`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `CFE`.`Puesto` ;
+
+SHOW WARNINGS;
 CREATE  TABLE IF NOT EXISTS `CFE`.`Puesto` (
-  `idPuesto` INT(11) NOT NULL COMMENT 'Clave del Puesto' ,
-  `NombrePuesto` VARCHAR(45) NOT NULL COMMENT 'Nombre del Puesto' ,
-  PRIMARY KEY (`idPuesto`) )
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = latin1
-COLLATE = latin1_swedish_ci;
+  `puesto_id` INT(11) NOT NULL COMMENT 'Clave del Puesto' ,
+  `puesto_nombre` VARCHAR(45) NOT NULL COMMENT 'Nombre del Puesto' ,
+  PRIMARY KEY (`puesto_id`) )
+ENGINE = InnoDB;
 
-CREATE  TABLE IF NOT EXISTS `CFE`.`Insidencia` (
-  `idInsidencia` INT(11) NOT NULL COMMENT 'Identificador de la Ausencia' ,
-  `Inicio` DATE NOT NULL COMMENT 'Inicio de Ausencia' ,
-  `Fin` DATE NOT NULL COMMENT 'Fin de la Ausencia' ,
-  `Concepto` VARCHAR(45) NOT NULL ,
-  `Empleado_idEmpleado` INT(11) NOT NULL ,
-  PRIMARY KEY (`idInsidencia`) ,
-  INDEX `fk_Insidencia_Empleado1_idx` (`Empleado_idEmpleado` ASC) ,
-  CONSTRAINT `fk_Insidencia_Empleado1`
-    FOREIGN KEY (`Empleado_idEmpleado` )
-    REFERENCES `CFE`.`Empleado` (`idEmpleado` )
+SHOW WARNINGS;
+
+-- -----------------------------------------------------
+-- Table `CFE`.`Empleado`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `CFE`.`Empleado` ;
+
+SHOW WARNINGS;
+CREATE  TABLE IF NOT EXISTS `CFE`.`Empleado` (
+  `emp_id` INT(11) NOT NULL COMMENT 'Clave del Empleado' ,
+  `emp_nombre` VARCHAR(45) NOT NULL COMMENT 'Nombre del Empleado' ,
+  `emp_puesto` INT(11) NULL ,
+  PRIMARY KEY (`emp_id`) ,
+  CONSTRAINT `fk_Empleado_Puesto`
+    FOREIGN KEY (`emp_puesto` )
+    REFERENCES `CFE`.`Puesto` (`puesto_id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = latin1
-COLLATE = latin1_swedish_ci;
+ENGINE = InnoDB;
 
+SHOW WARNINGS;
+CREATE INDEX `fk_Empleado_Puesto` ON `CFE`.`Empleado` (`emp_puesto` ASC) ;
+
+SHOW WARNINGS;
+
+-- -----------------------------------------------------
+-- Table `CFE`.`Incidencia`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `CFE`.`Incidencia` ;
+
+SHOW WARNINGS;
+CREATE  TABLE IF NOT EXISTS `CFE`.`Incidencia` (
+  `inci_id` INT NOT NULL COMMENT 'Identificador de la Ausencia' ,
+  `inci_inicio` DATE NOT NULL COMMENT 'Inicio de Ausencia' ,
+  `inci_fin` DATE NOT NULL COMMENT 'Fin de la Ausencia' ,
+  `inci_concepto` VARCHAR(45) NOT NULL ,
+  `inci_empleado` INT(11) NOT NULL ,
+  PRIMARY KEY (`inci_id`) ,
+  CONSTRAINT `fk_Insidencia_Empleado`
+    FOREIGN KEY (`inci_empleado` )
+    REFERENCES `CFE`.`Empleado` (`emp_id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+SHOW WARNINGS;
+CREATE INDEX `fk_Insidencia_Empleado` ON `CFE`.`Incidencia` (`inci_empleado` ASC) ;
+
+SHOW WARNINGS;
+
+-- -----------------------------------------------------
+-- Table `CFE`.`Capacidad`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `CFE`.`Capacidad` ;
+
+SHOW WARNINGS;
 CREATE  TABLE IF NOT EXISTS `CFE`.`Capacidad` (
-  `idCapacidad` INT(11) NOT NULL ,
-  `NombreCapacidad` VARCHAR(45) NOT NULL ,
-  `Puesto_idPuesto` INT(11) NOT NULL ,
-  `Empleado_idEmpleado` INT(11) NOT NULL ,
-  PRIMARY KEY (`idCapacidad`) ,
-  INDEX `fk_Capacidad_Puesto1` (`Puesto_idPuesto` ASC) ,
-  INDEX `fk_Capacidad_Empleado1` (`Empleado_idEmpleado` ASC) ,
-  CONSTRAINT `fk_Capacidad_Puesto1`
-    FOREIGN KEY (`Puesto_idPuesto` )
-    REFERENCES `CFE`.`Puesto` (`idPuesto` )
+  `cap_id` INT(11) NOT NULL ,
+  `cap_nombre` VARCHAR(45) NULL ,
+  `cap_puesto` INT(11) NOT NULL ,
+  `cap_empleado` INT(11) NOT NULL ,
+  PRIMARY KEY (`cap_id`) ,
+  CONSTRAINT `fk_Capacidad_Puesto`
+    FOREIGN KEY (`cap_puesto` )
+    REFERENCES `CFE`.`Puesto` (`puesto_id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Capacidad_Empleado1`
-    FOREIGN KEY (`Empleado_idEmpleado` )
-    REFERENCES `CFE`.`Empleado` (`idEmpleado` )
+  CONSTRAINT `fk_Capacidad_Empleado`
+    FOREIGN KEY (`cap_empleado` )
+    REFERENCES `CFE`.`Empleado` (`emp_id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = latin1
-COLLATE = latin1_swedish_ci;
+ENGINE = InnoDB;
 
+SHOW WARNINGS;
+CREATE INDEX `fk_Capacidad_Puesto` ON `CFE`.`Capacidad` (`cap_puesto` ASC) ;
+
+SHOW WARNINGS;
+CREATE INDEX `fk_Capacidad_Empleado` ON `CFE`.`Capacidad` (`cap_empleado` ASC) ;
+
+SHOW WARNINGS;
+
+-- -----------------------------------------------------
+-- Table `CFE`.`Usuario`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `CFE`.`Usuario` ;
+
+SHOW WARNINGS;
 CREATE  TABLE IF NOT EXISTS `CFE`.`Usuario` (
-  `idUsuario` INT(11) NOT NULL ,
-  `Nombre` VARCHAR(30) NOT NULL ,
-  `Contraseña` VARCHAR(30) NOT NULL ,
-  `Empleado_idEmpleado` INT(11) NOT NULL ,
-  `Insidencia_idInsidencia` INT(11) NOT NULL ,
-  PRIMARY KEY (`idUsuario`) ,
-  INDEX `fk_Usuario_Empleado1_idx` (`Empleado_idEmpleado` ASC) ,
-  INDEX `fk_Usuario_Insidencia1` (`Insidencia_idInsidencia` ASC) ,
-  CONSTRAINT `fk_Usuario_Empleado1`
-    FOREIGN KEY (`Empleado_idEmpleado` )
-    REFERENCES `CFE`.`Empleado` (`idEmpleado` )
+  `usu_id` INT NOT NULL ,
+  `usu_nombre` VARCHAR(30) NOT NULL ,
+  `usu_password` VARCHAR(30) NOT NULL ,
+  `usu_empleado` INT(11) NOT NULL ,
+  `usu_incidencia` INT NOT NULL ,
+  PRIMARY KEY (`usu_id`) ,
+  CONSTRAINT `fk_Usuario_Empleado`
+    FOREIGN KEY (`usu_empleado` )
+    REFERENCES `CFE`.`Empleado` (`emp_id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Usuario_Insidencia1`
-    FOREIGN KEY (`Insidencia_idInsidencia` )
-    REFERENCES `CFE`.`Insidencia` (`idInsidencia` )
+  CONSTRAINT `fk_Usuario_Insidencia`
+    FOREIGN KEY (`usu_incidencia` )
+    REFERENCES `CFE`.`Incidencia` (`inci_id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = latin1
-COLLATE = latin1_swedish_ci;
+ENGINE = InnoDB;
 
-DROP TABLE IF EXISTS `CFE`.`Empleados` ;
+SHOW WARNINGS;
+CREATE INDEX `fk_Usuario_Empleado` ON `CFE`.`Usuario` (`usu_empleado` ASC) ;
+
+SHOW WARNINGS;
+CREATE INDEX `fk_Usuario_Insidencia` ON `CFE`.`Usuario` (`usu_incidencia` ASC) ;
+
+SHOW WARNINGS;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
