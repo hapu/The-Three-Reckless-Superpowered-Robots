@@ -1,13 +1,28 @@
 Cosas Por hacer
-Interfaz
-Empleados
-Organigrama
-Insidencias
 
-Base de datos
+Menu
+	Login de Usuarios
+	Enlaces
 
--Imprimir Arbol
--Modificar Arbol
-Login
+Interfaz de Empleados
+	Para Agregar Empleados
+	Para Modificar Empleados
+	Para Eliminar Empleados
+	
+Interfaz de Capacitacion
+	Buscar Empleados
+	Listar Capacidades de el Empleado
+	Agregar Modificar o Eliminar Capacidades al Empleado
 
-Comprobar Que no halla colisiones en las fechas
+Interfaz de Organigrama
+	Imprimir Organigrama
+	Agregar Nodos
+	Modificar Nodos
+	Eliminar Nodos
+	Modificar la Base de Datos
+
+Interfaz para las Insidencias
+	Buscar en la Base de Datos el Empleado
+	Capturar Rango de Insidencia
+	Elaborar Propuesta de Insidencias
+	Almacenar en Base de Datos
