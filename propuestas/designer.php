@@ -1,5 +1,4 @@
 ﻿<?php
-/* NO SE NOS OCURRIO NADA :( */
 require_once "empleado.class.php";
 
 session_start();
