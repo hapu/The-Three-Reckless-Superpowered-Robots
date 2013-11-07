@@ -14,8 +14,8 @@ imprimir($tronco);
 // file_put_contents("Tree.txt", serialize($tronco));
 
 // Buscar Nodo
-$nodoTemp = buscarNodo($tronco, "006");
-imprimir($nodoTemp);
+// $nodoTemp = buscarNodo($tronco, "006");
+// imprimir($nodoTemp);
 
 // Bandera
 print __LINE__."\n";
@@ -60,5 +60,10 @@ function buscarNodo(Puesto $nodo, $idPuesto)
 	}
 
 	else return null;
+}
+
+function agregar_nodo_a_la_base_de_datos(Puesto $nodo)
+{
+
 }
 ?>
