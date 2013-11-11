@@ -26,7 +26,6 @@ class Buscador
 		$result = mysql_query("SELECT * FROM Empleado WHERE emp_nombre LIKE '%$busqueda%';");
 		if (!$result) die ("Database access failed: " . mysql_error());
 		return $result;
-
 	}
 
 	function buscarPorCapacidad($puesto)

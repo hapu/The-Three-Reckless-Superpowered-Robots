@@ -1,83 +1,45 @@
 <?php
-//Login
-require_once '../Login.php';
-$db_server = mysql_connect($db_hostname, $db_username, $db_password);
-if (!db_server)
-	die("Unable to connect to MySQL: " . mysql_error());
+session_start();
 
-//Seleccion de Base de Datos
-mysql_select_db($db_database)
-or die("Unable to select database: " . mysql_error());
-
-$db_table = 'Capacidad';
-
-//Consultar Columnas de la Tabla
-$result = mysql_query('SHOW FULL COLUMNS IN ' . $db_table . ';');
-if (!$result) die ("Database access failed: " . mysql_error());
-$rows = mysql_num_rows($result);
-
-//Insertar Datos
-//Revision de Parametros
-$consultaCompleta = true;
-for ($i = 0; $i < $rows; $i++) {
-	if (!isSet($_POST[mysql_result($result, $i, 0)]) | $_POST[mysql_result($result, $i, 0)] == ""){
-		$consultaCompleta = false;
-	}
-}
-
-
-if ($consultaCompleta)
+switch ($_POST['etapa'])
 {
-	//Formar Consulta para Insercion
-	$query = 'INSERT INTO ' . $db_table . '(';
-	$query .= mysql_result($result, 0, 0);
-	for ($i = 1; $i < $rows; $i++) {
-		$query .= ', ' . mysql_result($result, $i, 0) ;
-	}
-	$query .= ') VALUES(';
-	$query .= $_POST[mysql_result($result, 0, 0)];
-	for ($i = 1; $i < $rows; $i++) {
-		$query .= ', \'' . $_POST[mysql_result($result, $i, 0)] . '\'';
-	}
-	$query .= ');';
-	//Realizar Insercion
-	//echo $query;
-	if(!mysql_query($query))
-		echo mysql_error();
-}
+	default:
+		require_once 'etapa0.html';
+		break;
 
 
-//Imprimir Inputs
-echo '<form method="post" action="Empleados.php"/>';
-for ($i = 0; $i < $rows; $i++) {
-	echo mysql_result($result, $i, 8);
-	echo '<br><input type="text" name="' . mysql_result($result, $i, 0) . '" /><br><br>';
-}
-echo '<input type="submit" >';
-echo "<br>";
-echo "<br>";
+	case '0':
+		require_once 'etapa1.html';
 
-//Imprimir Tabla
-//Titulos
-echo '<table border="1">';
-echo "<tr>";
-for ($i = 0; $i < $rows; $i++) {
-	echo '<th>' . mysql_result($result, $i, 8) . '</th>';
+		echo '<form method="post" action="">';
+		echo 'Nombre o Numero<input type="text" name="busqueda" value="'.$_POST['busqueda'].'">';
+		echo'<input type="hidden" name="etapa" value="0" /><input type="submit" value="Buscar"/>
+		</form>	';
+
+		require_once '../propuestas/buscador.class.php';
+		$foo = new Buscador();
+		$result = $foo->buscar_empleados_por_nombre($_POST['busqueda']);
+
+		echo '<form method="post" action="">
+		<select name="empleado" size="5">';
+
+		$rows = mysql_num_rows($result);
+		for ($i = 0; $i < $rows; $i++) {
+			$row = mysql_fetch_row($result);
+			echo '<option value="' . $row[0] . '">' . $row[0] . ' ' . $row[1] .'</option>';
+		}
+
+		echo '</select> <input type="hidden" name="etapa" value="1" />
+		<p>
+		<input type="submit" value="Enviar" />
+		</p>
+		</form>';
+		break;
+
+
+	case '1':
+		$_SESSION['id_empleado'] = $_POST['empleado'];
+		require_once 'etapa2.html';
+		break;
 }
-echo '<th>Acciones</th>';
-echo '</tr>';
-//Campos
-$result = mysql_query("SELECT * FROM $db_table");
-if (!$result) die ("Database access failed: " . mysql_error());
-$rows = mysql_num_rows($result);
-for ($i = 0; $i < $rows; $i++) {
-	$row = mysql_fetch_row($result);
-	echo "</tr>";
-	foreach ($row as $value) {
-		echo "<td> $value </td>";
-	}
-	echo '<td>Boton</td>';
-	echo "</tr>";
-}
-mysql_close($db_server);
 ?>

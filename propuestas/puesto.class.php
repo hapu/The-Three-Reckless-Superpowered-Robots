@@ -1,7 +1,7 @@
 <?php
 class Puesto
 {
-	var $nombre;
-	var $id;
+	public $nombre;
+	public $id;
 }
 ?>
