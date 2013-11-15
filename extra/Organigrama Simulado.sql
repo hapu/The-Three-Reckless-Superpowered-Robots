@@ -1,0 +1,15 @@
+INSERT INTO Puesto (pst_id, pst_nombre) VALUES ( '001', 'Gerente' );
+INSERT INTO Subpuesto (spt_puesto_superior, spt_puesto_inferior) VALUES ( '001', '002' );
+INSERT INTO Subpuesto (spt_puesto_superior, spt_puesto_inferior) VALUES ( '001', '003' );
+INSERT INTO Subpuesto (spt_puesto_superior, spt_puesto_inferior) VALUES ( '001', '004' );
+INSERT INTO Puesto (pst_id, pst_nombre) VALUES ( '002', 'Puesto 0' ); 
+INSERT INTO Subpuesto (spt_puesto_superior, spt_puesto_inferior) VALUES ( '002', '005' );
+INSERT INTO Subpuesto (spt_puesto_superior, spt_puesto_inferior) VALUES ( '002', '006' );
+INSERT INTO Puesto (pst_id, pst_nombre) VALUES ( '005', 'Puesto 0.0' ); 
+INSERT INTO Puesto (pst_id, pst_nombre) VALUES ( '006', 'Puesto 0.1' ); 
+INSERT INTO Subpuesto (spt_puesto_superior, spt_puesto_inferior) VALUES ( '006', '008' );
+INSERT INTO Puesto (pst_id, pst_nombre) VALUES ( '008', 'Puesto 0.1.0' ); 
+INSERT INTO Puesto (pst_id, pst_nombre) VALUES ( '003', 'Puesto 1' ); 
+INSERT INTO Puesto (pst_id, pst_nombre) VALUES ( '004', 'Puesto 2' ); 
+INSERT INTO Subpuesto (spt_puesto_superior, spt_puesto_inferior) VALUES ( '004', '007' );
+INSERT INTO Puesto (pst_id, pst_nombre) VALUES ( '007', 'Puesto 2.0' );

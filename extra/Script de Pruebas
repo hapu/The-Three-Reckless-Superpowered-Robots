@@ -1,0 +1,20 @@
+SELECT * FROM Capacidad;
+SELECT * FROM Puesto;
+SELECT * FROM Empleado;
+
+INSERT INTO Capacidad(cap_nombre,cap_puesto,cap_empleado)VALUES('I','001','00001');
+INSERT INTO Capacidad(cap_nombre,cap_puesto,cap_empleado)VALUES('I','002','00010');
+INSERT INTO Capacidad(cap_nombre,cap_puesto,cap_empleado)VALUES('I','003','00011');
+INSERT INTO Capacidad(cap_nombre,cap_puesto,cap_empleado)VALUES('I','004','00100');
+INSERT INTO Capacidad(cap_nombre,cap_puesto,cap_empleado)VALUES('I','005','00101');
+INSERT INTO Capacidad(cap_nombre,cap_puesto,cap_empleado)VALUES('I','006','00110');
+INSERT INTO Capacidad(cap_nombre,cap_puesto,cap_empleado)VALUES('I','007','00111');
+INSERT INTO Capacidad(cap_nombre,cap_puesto,cap_empleado)VALUES('I','003','00111');
+DELETE FROM Capacidad WHERE cap_puesto = '003' AND cap_empleado =  '00111';
+SELECT * FROM Empleado WHERE emp_nombre LIKE '%%';
+SELECT * FROM Empleado WHERE emp_id = '00001';
+SELECT * FROM Capacidad WHERE cap_empleado = '00111';
+SELECT Puesto.* FROM Puesto JOIN Capacidad ON cap_puesto = pst_id WHERE  cap_empleado = '00001';
+SELECT * FROM Capacidad WHERE cap_puesto = '003';
+SELECT Empleado.* FROM Empleado JOIN Capacidad ON emp_id = cap_empleado WHERE  cap_puesto = '003';
+DELETE FROM Puesto WHERE pst_id LIKE '001';
