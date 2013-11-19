@@ -6,14 +6,17 @@
 // $emp = Modelo::buscar_empleado_por_id("00001");
 // var_dump($emp);
 
-$lista_pst = Modelo::buscar_puestos_que_puede_cubrir_un_empleado("00111");
-var_dump($lista_pst);
+// $lista_pst = Modelo::buscar_puestos_que_puede_cubrir_un_empleado("00111");
+// var_dump($lista_pst);
 
-$lista_pst = Modelo::buscar_puestos_que_no_puede_cubrir_un_empleado("00111");
-var_dump($lista_pst);
+// $lista_pst = Modelo::buscar_puestos_que_no_puede_cubrir_un_empleado("00111");
+// var_dump($lista_pst);
 
 // $lista_emp = Modelo::buscar_empleados_que_pueden_cubir_un_puesto2("003");
 // var_dump($lista_emp);
+
+$arbol = Modelo::leer_arbol_de_la_base_de_datos($id_puesto);
+var_dump($arbol);
 
 
 // print __LINE__ ."<BR>";
@@ -47,8 +50,8 @@ class Modelo
 			return true;
 
 		$resultado = array();
-		while ($row = $result->fetch_object()) {
-			$resultado[] = $row;
+			while ($row = $result->fetch_object()) {
+				$resultado[] = $row;
 		}
 
 		$db_server->close();
@@ -115,7 +118,7 @@ class Modelo
 	}
 
 	public static function buscar_puestos_que_no_puede_cubrir_un_empleado($id_empleado)
-	{//@TODO
+	{
 		$query = "SELECT * FROM Puesto WHERE pst_id != (SELECT Puesto.pst_id FROM Puesto JOIN Capacidad ON cap_puesto = pst_id WHERE  cap_empleado = '$id_empleado');";
 		$resultado = self::consulta($query);
 
@@ -159,6 +162,29 @@ class Modelo
 
 	public static function leer_arbol_de_la_base_de_datos($id_puesto)
 	{
+		$resultado = self::leer_puesto_de_la_base_de_datos($id_puesto);
+
+		$query = "SELECT spt_puesto_inferior FROM Subpuesto WHERE spt_puesto_superior = '$id_puesto';";
+		$resultado = self::consulta($query);
+
+		if($resultado === false)
+			return false;
+
+		foreach ($resultado as $puesto) {
+			;//@TODO
+
+		}
+		return $nodo;
+	}
+
+
+	/**
+	 *
+	 * @param int $id_puesto
+	 * @return boolean|Puesto
+	 */
+	public static function leer_puesto_de_la_base_de_datos($id_puesto)
+	{
 		$query = "SELECT * FROM Puesto WHERE pst_id = '$id_puesto';";
 		$resultado = self::consulta($query);
 
@@ -182,9 +208,9 @@ class Modelo
 		$query = "INSERT INTO Puesto (pst_id, pst_nombre) VALUES ('$puesto_id', '$puesto_nombre');";
 		$resultado = self::consulta($query);
 		if($resultado === false)
-			echo self::$db_error . '<BR>';
+			echo self::$db_error;
 		else
-			'Nice <BR>';
+			'Nice';
 
 		$suplentes = $nodo->getPuestosSuplentes();
 
@@ -193,9 +219,9 @@ class Modelo
 			$query = "INSERT INTO Subpuesto (spt_puesto_superior, spt_puesto_inferior) VALUES ('$puesto_id','$subpuesto_id');";
 			$resultado = self::consulta($query);
 			if($resultado === false)
-				echo self::$db_error . '<BR>';
+				echo self::$db_error;
 			else
-				'Nice <BR>';
+				'Nice';
 		}
 		foreach ($suplentes as $sup)
 			if(isset($sup))
