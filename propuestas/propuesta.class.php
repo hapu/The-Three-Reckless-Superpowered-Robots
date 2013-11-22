@@ -1,5 +1,4 @@
 <?php
-require_once("empleado.class.php");
 define("SUCCESS",0);
 define("WARNING",-1);
 define("ERROR",-2);

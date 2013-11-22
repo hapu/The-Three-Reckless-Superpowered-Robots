@@ -1,37 +1,29 @@
 ﻿<?php
-require_once "empleado.class.php";
-
+require_once '../test/modelo.class.php';
 session_start();
 
 
 
 switch ($_POST['etapa'])
 {
-
 	default:
 		require_once 'etapa0.html';
 		break;
 
-
 	case '0':
 		require_once 'etapa1.html';
-
 		echo '<form method="post" action="">';
 		echo 'Nombre o Numero<input type="text" name="busqueda" value="'.$_POST['busqueda'].'">';
 		echo'<input type="hidden" name="etapa" value="0" /><input type="submit" value="Buscar"/>
 		</form>	';
 
-		require_once 'buscador.class.php';
-		$foo = new Buscador();
-		$result = $foo->buscar_empleados_por_nombre($_POST['busqueda']);
+		$resultados = Modelo::buscar_empleados_por_nombre($_POST['busqueda']);
 
 		echo '<form method="post" action="">
 		<select name="empleado" size="5">';
 
-		$rows = mysql_num_rows($result);
-		for ($i = 0; $i < $rows; $i++) {
-			$row = mysql_fetch_row($result);
-			echo '<option value="' . $row[0] . '">' . $row[0] . ' ' . $row[1] .'</option>';
+		foreach ($resultados as $empleado) {
+			echo '<option value="' . $empleado->id . '">' . $empleado->id . ' ' . $empleado->nombre .'</option>';
 		}
 
 		echo '</select> <input type="hidden" name="etapa" value="1" />
@@ -43,29 +35,44 @@ switch ($_POST['etapa'])
 
 
 	case '1':
-		$_SESSION['id_empleado'] = $_POST['empleado'];
+
+		$_SESSION['empleado'] = Modelo::buscar_empleado_por_id($_POST['empleado']);
 		require_once 'etapa2.html';
 		break;
 
 
+	case '1.5':
+		$fecha_inicio = strtotime(str_replace('-', '/', $_POST['fecha_inicio']));
+		$fecha_fin = strtotime(str_replace('-', '/', $_POST['fecha_fin']));
+		if ($fecha_fin < $fecha_inicio)
+		{
+			require_once 'etapa2.html';
+			break;
+		}
+
+		$_SESSION['fecha_inicio'] = date('Y-m-d', $fecha_inicio);
+		$_SESSION['fecha_fin'] = date('Y-m-d', $fecha_fin);
 	case '2':
-		$_SESSION['fecha_inicio'] = $_POST['fecha_inicio'];
-		$_SESSION['fecha_fin'] = $_POST['fecha_fin'];
 		require_once 'etapa3.html';
+		$empleados_capaces = Modelo::buscar_empleados_que_pueden_cubir_un_puesto($_SESSION['empleado']->puesto);
+
+		echo '<form method="post" action="">
+		<select name="empleado" size="5">';
+
+		foreach ($empleados_capaces as $empleado) {
+			echo '<option value="' . $empleado->id . '">' . $empleado->id . ' ' . $empleado->nombre .'</option>';
+		}
+
+		echo '</select> <input type="hidden" name="etapa" value="3" />
+		<p>
+		<input type="submit" value="Enviar" />
+		</p>
+		</form>';
 		break;
 
-
 	case '3':
-		$propuesta[] =  $_POST['empleado'];
-		$propuesta[] =  $_POST['propuesta'];
-		$propuesta[] =  $_POST['propuesta'];
-		$_SESSION['propuesta'] = $propuesta;
-		echo 'Fin <br><br>';
-		foreach ($_SESSION as $key => $value) {
-			echo $key;
-			var_dump($value);
-			echo '<br>';
-		}
+		var_dump($_POST);
+		var_dump($_SESSION);
 		session_destroy();
 		break;
 
