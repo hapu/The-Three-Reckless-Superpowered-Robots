@@ -102,7 +102,6 @@ class Modelo
 	 */
 	public static function buscar_empleado_por_id($id_empleado)
 	{
-		$resultado = self::buscar_empleados_por_nombre($nombre);
 		$query = "SELECT * FROM Empleado WHERE emp_id = '$id_empleado';";
 		$resultado = self::consulta($query);
 
@@ -115,6 +114,25 @@ class Modelo
 		$empleado_temporal->puesto = $resultado[0]->emp_puesto;
 
 		return $empleado_temporal;
+	}
+
+	/**
+	 *
+	 * @param string $id_empleado
+	 * @param Empleado $emp
+	 * @return boolean
+	 */
+	public static function actualizar_empleado_por_id($id_empleado, Empleado $emp)
+	{
+		$query = "UPDATE Empleado
+		SET
+		emp_id = '$emp->id',
+		emp_nombre = '$emp->nombre',
+		emp_puesto = '$emp->puesto'
+		WHERE emp_id = '$id_empleado';";
+		$resultado = self::consulta($query);
+
+		return $resultado;
 	}
 
 	/**

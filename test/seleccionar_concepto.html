@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Escogiendo Fecha</title>
+</head>
+<body>
+	<form method="post" action="">
+		Fecha de Inicio <input type="date" name="fecha_inicio" value="mm/dd/aaaa" onfocus="if(this.value =='mm/dd/aaaa') this.value='';" /> <BR>Fecha de Fin <input type="date" name="fecha_fin" value="mm/dd/aaaa"
+			onfocus="if(this.value =='mm/dd/aaaa') this.value='';" /> <BR> Concepto: <select name="concepto">
+			<option value="Permiso sin Goce de Sueldo">Permiso sin Goce de Sueldo</option>
+			<option value="Permiso con Goce de Sueldo">Permiso con Goce de Sueldo</option>
+			<option value="Comision Oficial">Comision Oficial</option>
+			<option value="Vacaciones">Vacaciones</option>
+			<option value="Capacitacion">Capacitacion</option>
+			<option value="Incapacitacion">Incapacitacion</option>
+		</select> <input type="hidden" name="etapa" value="validar_fecha" /> <input type="submit" value="Enviar" />
+	</form>
+</body>
+</html>

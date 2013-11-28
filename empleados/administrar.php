@@ -1,83 +1,67 @@
 <?php
-//Login
-require_once 'Login.php';
-$db_server = mysql_connect($db_hostname, $db_username, $db_password);
-if (!db_server)
-	die("Unable to connect to MySQL: " . mysql_error());
+require_once '../test/modelo.class.php';
+session_start();
 
-//Seleccion de Base de Datos
-mysql_select_db($db_database)
-or die("Unable to select database: " . mysql_error());
-
-$db_table = 'Empleados';
-
-//Consultar Columnas de la Tabla
-$result = mysql_query('SHOW FULL COLUMNS IN ' . $db_table . ';');
-if (!$result) die ("Database access failed: " . mysql_error());
-$rows = mysql_num_rows($result);
-
-//Insertar Datos
-//Revision de Parametros
-$consultaCompleta = true;
-for ($i = 0; $i < $rows; $i++) {
-	if (empty($_POST[mysql_result($result, $i, 0)]) | $_POST[mysql_result($result, $i, 0)] == ""){
-		$consultaCompleta = false;
-	}
-}
-
-
-if ($consultaCompleta)
+switch ($_POST['etapa'])
 {
-	//Formar Consulta para Insercion
-	$query = 'INSERT INTO ' . $db_table . '(';
-	$query .= mysql_result($result, 0, 0);
-	for ($i = 1; $i < $rows; $i++) {
-		$query .= ', ' . mysql_result($result, $i, 0) ;
-	}
-	$query .= ') VALUES(';
-	$query .= $_POST[mysql_result($result, 0, 0)];
-	for ($i = 1; $i < $rows; $i++) {
-		$query .= ', \'' . $_POST[mysql_result($result, $i, 0)] . '\'';
-	}
-	$query .= ');';
-	//Realizar Insercion
-	//echo $query;
-	if(!mysql_query($query))
-		echo mysql_error();
-}
+	default:
+		require_once 'etapa0.html';
+		break;
+
+	case '0':
+		require_once 'etapa1.html';
+		echo '<form method="post" action="">';
+		echo 'Nombre o Numero<input type="text" name="busqueda" value="'.$_POST['busqueda'].'">';
+		echo'<input type="hidden" name="etapa" value="0" /><input type="submit" value="Buscar"/>
+		</form>	';
+
+		$resultados = Modelo::buscar_empleados_por_nombre($_POST['busqueda']);
+
+		echo '<form method="post" action="">
+		<select name="empleado" size="5">';
+
+		foreach ($resultados as $empleado) {
+			echo '<option value="' . $empleado->id . '">' . $empleado->id . ' -  ' . $empleado->nombre . ' - ' . $empleado->puesto .'</option>';
+		}
+
+		echo '</select> <input type="hidden" name="etapa" value="1" />
+		<p>
+		<input type="submit" value="Enviar" />
+		</p>
+		</form>';
+		break;
 
 
-//Imprimir Inputs
-echo '<form method="post" action="Empleados.php"/>';
-for ($i = 0; $i < $rows; $i++) {
-	echo mysql_result($result, $i, 8);
-	echo '<br><input type="text" name="' . mysql_result($result, $i, 0) . '" /><br><br>';
-}
-echo '<input type="submit" >';
-echo "<br>";
-echo "<br>";
+	case '1':
+		require_once 'etapa2.html';
+		$_SESSION['empleado'] = Modelo::buscar_empleado_por_id($_POST['empleado']);
 
-//Imprimir Tabla
-//Titulos
-echo '<table border="1">';
-echo "<tr>";
-for ($i = 0; $i < $rows; $i++) {
-	echo '<th>' . mysql_result($result, $i, 8) . '</th>';
+		echo '<form method="post" action="">';
+
+		echo 'Id <input type="text" name="id" value="'. $_SESSION['empleado']->id .'"><BR>';
+		echo 'Nombre <input type="text" name="nombre" value="'. $_SESSION['empleado']->nombre .'"><BR>';
+		echo 'Puesto <input type="text" name="puesto" value="'. $_SESSION['empleado']->puesto .'"><BR>';
+
+		echo '</select> <input type="hidden" name="etapa" value="2" />
+		<p>	<input type="submit" value="Enviar" /> </p>
+		</form>';
+
+		//FIXME
+		$resultado = Modelo::consulta("SELECT * FROM Puesto WHERE pst_id NOT IN
+				(SELECT emp_puesto FROM Empleado WHERE emp_puesto IS NOT NULL);");
+		foreach ($resultado as $puesto)
+			echo $puesto->pst_id . "<BR>";
+
+		break;
+	case '2':
+		$empleado_temporal = new Empleado();
+		$empleado_temporal->id = $_POST['id'];
+		$empleado_temporal->nombre = $_POST['nombre'];
+		$empleado_temporal->puesto = $_POST['puesto'];
+		$resultado = Modelo::actualizar_empleado_por_id($_SESSION['empleado']->id, $empleado_temporal);
+		header("Location: " . $_SERVER["PHP_SELF"]);
+		break;
+
 }
-echo '<th>Acciones</th>';
-echo '</tr>';
-//Campos
-$result = mysql_query("SELECT * FROM $db_table");
-if (!$result) die ("Database access failed: " . mysql_error());
-$rows = mysql_num_rows($result);
-for ($i = 0; $i < $rows; $i++) {
-	$row = mysql_fetch_row($result);
-	echo "</tr>";
-	foreach ($row as $value) {
-		echo "<td> $value </td>";
-	}
-	echo '<td>Boton</td>';
-	echo "</tr>";
-}
-mysql_close($db_server);
+
 ?>

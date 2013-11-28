@@ -1,22 +1,20 @@
 <?php
 
 // Inicialisacion
-require_once 'puesto.php';
+require_once ('../test/modelo.class.php');
 $tronco = new Puesto();
 
 // Lectura
-$tronco = unserialize(file_get_contents("Tree.txt"));
-// $tronco = leer_arbol_de_la_base_de_datos("001");
+// $tronco = unserialize(file_get_contents("Tree.txt"));
+$tronco = leer_arbol_de_la_base_de_datos("001");
 
 
 
 // Impresion
 imprimir($tronco);
 
-// require_once ('../test/modelo.class.php');
-// Modelo::agregar_nodo_a_la_base_de_datos($tronco);
-
 // Escritura
+Modelo::agregar_nodo_a_la_base_de_datos($tronco);
 // file_put_contents("Tree.txt", serialize($tronco));
 
 // Buscar Nodo

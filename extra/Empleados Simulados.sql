@@ -18,3 +18,26 @@ INSERT INTO Empleado (emp_id,emp_nombre,emp_puesto) VALUES ('10001', 'Matthew Ma
 INSERT INTO Empleado (emp_id,emp_nombre,emp_puesto) VALUES ('10010', 'Elijah Jackson', NULL);
 INSERT INTO Empleado (emp_id,emp_nombre,emp_puesto) VALUES ('10011', 'Emily Thompson', NULL);
 INSERT INTO Empleado (emp_id,emp_nombre,emp_puesto) VALUES ('10100', 'James White', NULL);
+
+INSERT INTO Puesto (pst_id, pst_nombre) VALUES ('00001', 'Puesto 1');
+INSERT INTO Puesto (pst_id, pst_nombre) VALUES ('00002', 'Puesto 2');
+INSERT INTO Puesto (pst_id, pst_nombre) VALUES ('00003', 'Puesto 3');
+INSERT INTO Puesto (pst_id, pst_nombre) VALUES ('00004', 'Puesto 4');
+INSERT INTO Puesto (pst_id, pst_nombre) VALUES ('00005', 'Puesto 5');
+INSERT INTO Puesto (pst_id, pst_nombre) VALUES ('00006', 'Puesto 6');
+INSERT INTO Puesto (pst_id, pst_nombre) VALUES ('00007', 'Puesto 7');
+INSERT INTO Puesto (pst_id, pst_nombre) VALUES ('00008', 'Puesto 8');
+INSERT INTO Puesto (pst_id, pst_nombre) VALUES ('00009', 'Puesto 9');
+INSERT INTO Puesto (pst_id, pst_nombre) VALUES ('00010', 'Puesto 10');
+INSERT INTO Puesto (pst_id, pst_nombre) VALUES ('00011', 'Puesto 11');
+INSERT INTO Puesto (pst_id, pst_nombre) VALUES ('00012', 'Puesto 12');
+
+INSERT INTO Capacidad(cap_nombre,cap_puesto,cap_empleado)VALUES(NULL,'00001','00001');
+INSERT INTO Capacidad(cap_nombre,cap_puesto,cap_empleado)VALUES(NULL,'00002','00010');
+INSERT INTO Capacidad(cap_nombre,cap_puesto,cap_empleado)VALUES(NULL,'00003','00011');
+INSERT INTO Capacidad(cap_nombre,cap_puesto,cap_empleado)VALUES(NULL,'00004','00100');
+INSERT INTO Capacidad(cap_nombre,cap_puesto,cap_empleado)VALUES(NULL,'00005','00101');
+INSERT INTO Capacidad(cap_nombre,cap_puesto,cap_empleado)VALUES(NULL,'00006','00110');
+INSERT INTO Capacidad(cap_nombre,cap_puesto,cap_empleado)VALUES(NULL,'00007','00111');
+INSERT INTO Capacidad(cap_nombre,cap_puesto,cap_empleado)VALUES(NULL,'00008','01000');
+INSERT INTO Capacidad(cap_nombre,cap_puesto,cap_empleado)VALUES(NULL,'00003','00111');
