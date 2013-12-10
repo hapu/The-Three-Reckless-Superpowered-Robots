@@ -48,3 +48,26 @@ emp_id = '$emp->id',
 emp_nombre = '$emp->nombre',
 emp_puesto = '$emp->puesto'
 WHERE emp_id = '$id_empleado';
+
+SELECT inci_inicio, inci_fin FROM Incidencia 
+JOIN Empleado ON emp_id = inci_empleado WHERE emp_id = '003';
+
+SELECT * FROM Incidencia;
+
+SELECT inci_inicio, inci_fin, inci_concepto FROM Incidencia
+WHERE inci_empleado = '00011'
+AND inci_inicio <= '2014-01-16'
+AND inci_fin >= '2014-01-15';
+
+SELECT Empleado.*,
+pst_nombre, 
+(SELECT COUNT(*) 
+FROM Incidencia 
+WHERE inci_empleado = emp_id 
+AND inci_inicio <= '2014-01-16'
+AND inci_fin >= '2013-01-15' ) AS emp_incidencias 
+FROM Empleado 
+JOIN Capacidad ON emp_id = cap_empleado 
+JOIN Puesto ON emp_puesto = pst_id
+WHERE cap_puesto = '00000007';
+

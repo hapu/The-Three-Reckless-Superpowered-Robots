@@ -8,21 +8,22 @@ Interfaz de Empleados
 	Para Agregar Empleados
 	Para Modificar Empleados
 	Para Eliminar Empleados
-	
+
 Interfaz de Capacitacion
 	Buscar Empleados
 	Listar Capacidades de el Empleado
 	Agregar Modificar o Eliminar Capacidades al Empleado
 
-Interfaz de Organigrama
-	Imprimir Organigrama
-	Agregar Nodos
-	Modificar Nodos
-	Eliminar Nodos
-	Modificar la Base de Datos
+#Interfaz de Organigrama
+#	Imprimir Organigrama
+#	Agregar Nodos
+#	Modificar Nodos
+#	Eliminar Nodos
+#	Modificar la Base de Datos
 
 Interfaz para las Insidencias
-	Buscar en la Base de Datos el Empleado
-	Capturar Rango de Insidencia
-	Elaborar Propuesta de Insidencias
-	Almacenar en Base de Datos
+	Consulta por clave de Empleado(5 char) clave de puesto(7 char)
+	 , Nombre de Empleado o de el Puesto
+	 Consulta de Insidencias activas de el Empleado
+	 Consulta de empleados capaces de cubrir el puesto
+	 Insercion de Insidencia para todos los empleados incidentes

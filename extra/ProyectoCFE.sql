@@ -16,7 +16,7 @@ SHOW WARNINGS;
 CREATE  TABLE IF NOT EXISTS `CFE`.`Empleado` (
   `emp_id` VARCHAR(5) NOT NULL COMMENT 'Clave del Empleado' ,
   `emp_nombre` VARCHAR(45) NOT NULL COMMENT 'Nombre del Empleado' ,
-  `Puesto_pst_id` INT(11) NULL ,
+  `emp_puesto` VARCHAR(8) NOT NULL ,
   PRIMARY KEY (`emp_id`) )
 ENGINE = InnoDB;
 
@@ -29,7 +29,7 @@ DROP TABLE IF EXISTS `CFE`.`Puesto` ;
 
 SHOW WARNINGS;
 CREATE  TABLE IF NOT EXISTS `CFE`.`Puesto` (
-  `pst_id` INT(11) NOT NULL COMMENT 'Clave del Puesto' ,
+  `pst_id` VARCHAR(8) NOT NULL COMMENT 'Clave del Puesto' ,
   `pst_nombre` VARCHAR(45) NOT NULL COMMENT 'Nombre del Puesto' ,
   PRIMARY KEY (`pst_id`) )
 ENGINE = InnoDB;
@@ -43,16 +43,11 @@ DROP TABLE IF EXISTS `CFE`.`Usuario` ;
 
 SHOW WARNINGS;
 CREATE  TABLE IF NOT EXISTS `CFE`.`Usuario` (
-  `usu_id` INT NOT NULL ,
+  `usu_id` INT NOT NULL AUTO_INCREMENT ,
   `usu_nombre` VARCHAR(30) NOT NULL ,
   `usu_password` VARCHAR(30) NOT NULL ,
   `usu_empleado` VARCHAR(5) NOT NULL ,
-  PRIMARY KEY (`usu_id`) ,
-  CONSTRAINT `fk_Usuario_Empleado`
-    FOREIGN KEY (`usu_empleado` )
-    REFERENCES `CFE`.`Empleado` (`emp_id` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  PRIMARY KEY (`usu_id`) )
 ENGINE = InnoDB;
 
 SHOW WARNINGS;
@@ -67,23 +62,13 @@ DROP TABLE IF EXISTS `CFE`.`Incidencia` ;
 
 SHOW WARNINGS;
 CREATE  TABLE IF NOT EXISTS `CFE`.`Incidencia` (
-  `inci_id` INT NOT NULL COMMENT 'Identificador de la Ausencia' ,
+  `inci_id` INT NOT NULL AUTO_INCREMENT COMMENT 'Identificador de la Ausencia' ,
   `inci_inicio` DATE NOT NULL COMMENT 'Inicio de Ausencia' ,
   `inci_fin` DATE NOT NULL COMMENT 'Fin de la Ausencia' ,
   `inci_concepto` VARCHAR(45) NOT NULL ,
   `inci_empleado` VARCHAR(5) NOT NULL ,
   `inci_usuario` INT NOT NULL ,
-  PRIMARY KEY (`inci_id`) ,
-  CONSTRAINT `fk_Insidencia_Empleado`
-    FOREIGN KEY (`inci_empleado` )
-    REFERENCES `CFE`.`Empleado` (`emp_id` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Incidencia_Usuario`
-    FOREIGN KEY (`inci_usuario` )
-    REFERENCES `CFE`.`Usuario` (`usu_id` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  PRIMARY KEY (`inci_id`) )
 ENGINE = InnoDB;
 
 SHOW WARNINGS;
@@ -101,21 +86,10 @@ DROP TABLE IF EXISTS `CFE`.`Capacidad` ;
 
 SHOW WARNINGS;
 CREATE  TABLE IF NOT EXISTS `CFE`.`Capacidad` (
-  `cap_id` INT(11) NOT NULL ,
-  `cap_nombre` VARCHAR(45) NULL ,
-  `cap_puesto` INT(11) NOT NULL ,
+  `cap_puntuacion` INT NOT NULL DEFAULT 0 ,
+  `cap_puesto` VARCHAR(8) NOT NULL ,
   `cap_empleado` VARCHAR(5) NOT NULL ,
-  PRIMARY KEY (`cap_id`) ,
-  CONSTRAINT `fk_Capacidad_Puesto`
-    FOREIGN KEY (`cap_puesto` )
-    REFERENCES `CFE`.`Puesto` (`pst_id` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Capacidad_Empleado`
-    FOREIGN KEY (`cap_empleado` )
-    REFERENCES `CFE`.`Empleado` (`emp_id` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  PRIMARY KEY (`cap_puesto`, `cap_empleado`) )
 ENGINE = InnoDB;
 
 SHOW WARNINGS;
@@ -123,6 +97,26 @@ CREATE INDEX `fk_Capacidad_Puesto` ON `CFE`.`Capacidad` (`cap_puesto` ASC) ;
 
 SHOW WARNINGS;
 CREATE INDEX `fk_Capacidad_Empleado` ON `CFE`.`Capacidad` (`cap_empleado` ASC) ;
+
+SHOW WARNINGS;
+
+-- -----------------------------------------------------
+-- Table `CFE`.`Subpuesto`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `CFE`.`Subpuesto` ;
+
+SHOW WARNINGS;
+CREATE  TABLE IF NOT EXISTS `CFE`.`Subpuesto` (
+  `spt_puesto_superior` VARCHAR(8) NOT NULL ,
+  `spt_puesto_inferior` VARCHAR(8) NOT NULL ,
+  PRIMARY KEY (`spt_puesto_superior`, `spt_puesto_inferior`) )
+ENGINE = InnoDB;
+
+SHOW WARNINGS;
+CREATE INDEX `fk_Subpuesto_Puesto_Superior` ON `CFE`.`Subpuesto` (`spt_puesto_superior` ASC) ;
+
+SHOW WARNINGS;
+CREATE INDEX `fk_Subpuesto_Puesto_Inferior` ON `CFE`.`Subpuesto` (`spt_puesto_inferior` ASC) ;
 
 SHOW WARNINGS;
 
