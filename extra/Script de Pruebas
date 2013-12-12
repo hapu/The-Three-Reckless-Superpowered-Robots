@@ -71,3 +71,18 @@ JOIN Capacidad ON emp_id = cap_empleado
 JOIN Puesto ON emp_puesto = pst_id
 WHERE cap_puesto = '00000007';
 
+#Buscar Empleados
+SELECT emp_id, emp_nombre, pst_id, pst_nombre FROM Empleado
+JOIN Puesto ON emp_puesto = pst_id
+WHERE emp_nombre LIKE '%$cadena%'
+OR pst_nombre LIKE '%$cadena%';
+
+SELECT emp_id, emp_nombre, pst_id, pst_nombre FROM Empleado
+JOIN Puesto ON emp_puesto = pst_id
+WHERE emp_id = '$emp_id';
+
+SELECT emp_id, emp_nombre, pst_id, pst_nombre FROM Empleado
+JOIN Puesto ON emp_puesto = pst_id
+WHERE pst_id = '$pst_id';
+
+
