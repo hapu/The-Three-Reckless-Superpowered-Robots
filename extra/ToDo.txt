@@ -24,6 +24,32 @@ Interfaz de Capacitacion
 Interfaz para las Insidencias
 	Consulta por clave de Empleado(5 char) clave de puesto(7 char)
 	 , Nombre de Empleado o de el Puesto
-	 Consulta de Insidencias activas de el Empleado
+	 Mostrar Lista de Empleados (Clave de Empleado, Nombre de Empleado
+	 Clave de Puesto, Nombre de Puesto)
+
+SELECT emp_id, emp_nombre, pst_id, pst_nombre FROM Empleado
+JOIN Puesto ON emp_puesto = pst_id
+WHERE emp_nombre LIKE '%$cadena%'
+OR pst_nombre LIKE '%$cadena%';
+
+SELECT emp_id FROM Empleado
+WHERE emp_id = '$emp_id';
+
+SELECT emp_id
+JOIN Puesto ON emp_puesto = pst_id
+WHERE pst_id = '$pst_id';
+
+
+
+	 Consultar Insidencias en el rango de las fechas dadas
+
+	 Mostrar Concepto de la Incidencia y Fechas
+
+
 	 Consulta de empleados capaces de cubrir el puesto
-	 Insercion de Insidencia para todos los empleados incidentes
+	 (Clave de Empleado, Nombre de Empleado
+	 Clave de Puesto, Nombre de Puesto
+	 Insidencias en el Rango de Fechas)
+
+	 Captura de Insidencia
+
