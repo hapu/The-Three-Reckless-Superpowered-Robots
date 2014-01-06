@@ -6,65 +6,49 @@ session_start();
 switch ($_POST['etapa'])
 {
 	default:
-		require_once '../vista/buscar_empleado.html';
-		break;
-
-
-	case 'seleccionar_empleado':
-		$resultados = Modelo::buscar_empleados_por_nombre($_POST['busqueda']);
-		require_once '../vista/seleccionar_empleado.php';
-		break;
-
-	case 'almacenar_empleado':
-		$_SESSION['incidentes'] = array();
-		array_push($_SESSION['incidentes'], Modelo::buscar_empleado_por_id($_POST['empleado']));
-
-
-	case 'seleccionar_concepto':
-		require_once '../vista/seleccionar_concepto.html';
-		break;
-
-
-	case 'validar_fecha':
-		$fecha_inicio = strtotime(str_replace('-', '/', $_POST['fecha_inicio']));
-		$fecha_fin = strtotime(str_replace('-', '/', $_POST['fecha_fin']));
-		if ($fecha_inicio === false || $fecha_inicio === false || $fecha_inicio > $fecha_fin)
+		if(empty($_POST['empleado']))
 		{
-			require_once '../vista/seleccionar_concepto.html';
+			require_once '../vista/buscar_empleado.html';
+			break;
+		}
+		else if(strlen($_POST['empleado']) == 5 &&
+				Modelo::verificar_empleado_por_id($_POST['empleado']))
+			$_SESSION['empleado'] = Modelo::buscar_empleado_por_id($_POST['empleado']);
+		else if(strlen($_POST['empleado']) == 8 &&
+				false !== $id_empleado = Modelo::verificar_empleado_por_puesto($_POST['empleado']))
+			$_SESSION['empleado'] = Modelo::buscar_empleado_por_id($id_empleado);
+		else
+		{
+			$resultados = Modelo::buscar_empleados_por_nombre_o_puesto($_POST['empleado']);
+			if($resultados === false)
+				require_once '../vista/buscar_empleado.html';
+			else
+				require_once '../vista/seleccionar_empleado.php';
 			break;
 		}
 
-		$_SESSION['fecha_inicio'] = date('Y-m-d', $fecha_inicio);
-		$_SESSION['fecha_fin'] = date('Y-m-d', $fecha_fin);
-		$_SESSION['concepto'] = $_POST['concepto'];
 
-	case 'evaluacion_de_incidencia':
-		if(!empty($_POST['empleado']))
-			array_push($_SESSION['incidentes'], Modelo::buscar_empleado_por_id($_POST['empleado']));
+	case 'administrar_capacidades':
 
-		end($_SESSION['incidentes']);
-		$empleados_capaces = current($_SESSION['incidentes'])->puesto != '00000000' ? Modelo::buscar_empleados_que_pueden_cubir_un_puesto(current($_SESSION['incidentes'])->puesto) : false;
-
-		//Filtrar Empleados Capaces
-		foreach ($empleados_capaces as $key => $empleado_a_comparar) {
-			foreach ($_SESSION['incidentes'] as $incidente_a_comparar) {
-				if($empleado_a_comparar->id === $incidente_a_comparar->id)
-				{
-// 					var_dump($empleados_capaces[$key]);
-					unset($empleados_capaces[$key]);
-					break;
-				}
-			}
-		}
-
-		require_once '../vista/evaluacion_de_incidencia.php';
+		// 		require_once '../vista/administrar_capacidades.php';
 		break;
 
-	case 'almacenar_incidencia':
-		var_dump($_POST);
-		var_dump($_SESSION);
-		session_destroy();
-		break;
+}
 
+function buscar_empleado_o_empleados($cadena)
+{
+	if(empty($cadena))
+		return false;
+
+	if(strlen($cadena) == 5 &&
+			Modelo::verificar_empleado_por_id($cadena))
+		return Modelo::buscar_empleado_por_id($cadena);
+
+	if(strlen($cadena) == 8 &&
+			false !== $id_empleado = Modelo::verificar_empleado_por_puesto($cadena))
+		return Modelo::buscar_empleado_por_id($id_empleado);
+
+	$resultados = Modelo::buscar_empleados_por_nombre_o_puesto($cadena);
+	return $resultados;
 }
 ?>

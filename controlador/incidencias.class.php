@@ -6,18 +6,30 @@ session_start();
 switch ($_POST['etapa'])
 {
 	default:
-		require_once '../vista/buscar_empleado.html';
-		break;
+		if(empty($_POST['empleado']))
+		{
+			require_once '../vista/buscar_empleado.html';
+			break;
+		}
+		else if(strlen($_POST['empleado']) == 5 &&
+				Modelo::verificar_empleado_por_id($_POST['empleado']))
+			$_SESSION['empleado'] = Modelo::buscar_empleado_por_id($_POST['empleado']);
+		else if(strlen($_POST['empleado']) == 8 &&
+				false !== $id_empleado = Modelo::verificar_empleado_por_puesto($_POST['empleado']))
+			$_SESSION['empleado'] = Modelo::buscar_empleado_por_id($id_empleado);
+		else
+		{
+			$resultados = Modelo::buscar_empleados_por_nombre_o_puesto($_POST['empleado']);
+			if($resultados === false)
+				require_once '../vista/buscar_empleado.html';
+			else
+				require_once '../vista/seleccionar_empleado.php';
+			break;
+		}
 
-
-	case 'seleccionar_empleado':
-		$resultados = Modelo::buscar_empleados_por_nombre($_POST['busqueda']);
-		require_once '../vista/seleccionar_empleado.php';
-		break;
-
-	case 'almacenar_empleado':
+	// Almacenar Empleado
 		$_SESSION['incidentes'] = array();
-		array_push($_SESSION['incidentes'], Modelo::buscar_empleado_por_id($_POST['empleado']));
+		array_push($_SESSION['incidentes'], $_SESSION['empleado']);
 
 
 	case 'seleccionar_concepto':
