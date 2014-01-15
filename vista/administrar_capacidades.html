@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="estilo.css">
+<meta charset="UTF-8">
+<title>Administrar Capacidades</title>
+</head>
+<body>
+	<table>
+		<tr>
+			<td>
+				<form method="post" action="">
+					<input type="hidden" name="etapa" value="administrar_capacidades" /> <select
+						name="puestos_a_remover" size="5">
+						<?php listar_puestos($puestos_que_puede_cubrir);?>
+					</select>
+					<p>
+						<input type="submit" value="Quitar" />
+					</p>
+				</form>
+			</td>
+			<td>
+				<form method="post" action="">
+					<input type="hidden" name="etapa" value="administrar_capacidades" /> <select
+						name="puestos_a_agregar" size="5">
+						<?php listar_puestos($puestos_que_no_puede_cubrir);?>
+					</select>
+					<p>
+						<input type="submit" value="Agregar" />
+					</p>
+				</form>
+			</td>
+		<tr>
+	</table>
+</body>
+</html>
+<?php
+function listar_puestos($lista){
+    foreach ($lista as $puesto) {
+        echo '<option value="' . $puesto->pst_id. '">'
+        . $puesto->pst_id . ' | '
+        . $puesto->pst_nombre . '</option>
+        ';
+    }
+}
+?>

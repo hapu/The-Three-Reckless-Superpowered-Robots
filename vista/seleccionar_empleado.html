@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="estilo.css">
 <meta charset="UTF-8">
 <title>Seleccionar Empleado</title>
 </head>
@@ -15,11 +14,7 @@
 	</form>
 	<form method="post" action="">
 		<select name="empleado" size="5">
-			<?php
-			foreach ($resultados as $empleado) {
-				echo '<option value="' . $empleado->emp_id. '">' . $empleado->emp_id . ' | ' . $empleado->emp_nombre . ' | ' . $empleado->pst_id . ' | ' . $empleado->pst_nombre . '</option>';
-			}
-			?>
+			<?php listar_empleados($resultados);?>
 		</select>
 		<p>
 			<input type="submit" value="Seleccionar" />
@@ -27,3 +22,15 @@
 	</form>
 </body>
 </html>
+<?php
+function listar_empleados($lista){
+	foreach ($lista as $empleado) {
+		echo '<option value="' . $empleado->emp_id. '">'
+		. $empleado->emp_id . ' | '
+		. $empleado->emp_nombre . ' | '
+		. $empleado->pst_id . ' | '
+		. $empleado->pst_nombre . '</option>
+		';
+	}
+}
+?>

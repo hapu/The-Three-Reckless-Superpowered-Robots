@@ -6,26 +6,19 @@ session_start();
 switch ($_POST['etapa'])
 {
 	default:
-		if(empty($_POST['empleado']))
+		$resultados = buscar_empleado_o_empleados($_POST['empleado']);
+		if(is_bool($resultados))
 		{
 			require_once '../vista/buscar_empleado.html';
 			break;
 		}
-		else if(strlen($_POST['empleado']) == 5 &&
-				Modelo::verificar_empleado_por_id($_POST['empleado']))
-			$_SESSION['empleado'] = Modelo::buscar_empleado_por_id($_POST['empleado']);
-		else if(strlen($_POST['empleado']) == 8 &&
-				false !== $id_empleado = Modelo::verificar_empleado_por_puesto($_POST['empleado']))
-			$_SESSION['empleado'] = Modelo::buscar_empleado_por_id($id_empleado);
-		else
+		elseif (is_array($resultados))
 		{
-			$resultados = Modelo::buscar_empleados_por_nombre_o_puesto($_POST['empleado']);
-			if($resultados === false)
-				require_once '../vista/buscar_empleado.html';
-			else
-				require_once '../vista/seleccionar_empleado.php';
+			require_once '../vista/seleccionar_empleado.html';
 			break;
 		}
+
+		$_SESSION['empleado'] = $resultados;
 
 	// Almacenar Empleado
 		$_SESSION['incidentes'] = array();
@@ -72,7 +65,7 @@ switch ($_POST['etapa'])
 			}
 		}
 
-		require_once '../vista/evaluacion_de_incidencia.php';
+		require_once '../vista/evaluacion_de_incidencia.html';
 		break;
 
 	case 'almacenar_incidencia':
@@ -94,6 +87,22 @@ switch ($_POST['etapa'])
 
 		session_destroy();
 		break;
+}
 
+function buscar_empleado_o_empleados($cadena)
+{
+	if(empty($cadena))
+		return false;
+	else if(strlen($cadena) == 5 && Modelo::buscar_cantidad_de_empleados_por_id($cadena))
+		return Modelo::buscar_empleado_por_id($cadena);
+	else if(strlen($cadena) == 8 &&	Modelo::buscar_cantidad_de_empleados_asignados_a_un_puesto($cadena))
+		return Modelo::buscar_empleado_por_puesto($cadena);
+	else
+	{
+		$resultados = Modelo::buscar_empleados_por_nombre_o_puesto($cadena);
+		if(is_array($resultados) & count($resultados) > 0)
+			return $resultados;
+	}
+	return false;
 }
 ?>
