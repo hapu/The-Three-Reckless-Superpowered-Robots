@@ -1,10 +1,47 @@
 <?php
-require_once '../modelo/modelo.class.php';
 session_start();
+if(empty($_SESSION['usuario']))
+	header("Location: " . "./controlador/login.php");
 
+require_once ('../modelo/modelo.class.php');
 
 switch ($_POST['etapa'])
 {
+	default:
+		$resultados = buscar_empleado_o_empleados($_POST['empleado']);
+		if(is_bool($resultados))
+		{
+			require_once '../vista/buscar_empleado.html';
+			break;
+		}
+		elseif (is_array($resultados))
+		{
+			require_once '../vista/seleccionar_empleado.html';
+			break;
+		}
+		var_dump($resultados);
+		$_SESSION['empleado'] = $resultados;
+
+		$temp = Modelo::buscar_puestos_que_puede_cubrir_un_empleado($_SESSION['empleado']->emp_id);
+		$puestos_que_puede_cubrir = Array();
+		foreach ($temp as $puesto) {
+			$puestos_que_puede_cubrir[$puesto->pst_id] = $puesto;
+		}
+
+		$_SESSION['puestos_que_puede_cubrir'] = $puestos_que_puede_cubrir;
+
+		$temp = Modelo::buscar_puestos_que_no_puede_cubrir_un_empleado($_SESSION['empleado']->emp_id);
+		$puestos_que_no_puede_cubrir = Array();
+		foreach ($temp as $puesto) {
+			$puestos_que_no_puede_cubrir[$puesto->pst_id] = $puesto;
+		}
+		$_SESSION['puestos_que_no_puede_cubrir'] = $puestos_que_no_puede_cubrir;
+
+	case 'administrar_capacidades':
+
+		require_once '../vista/administrar_capacidades.html';
+		break;
+
 }
 
 function buscar_empleado_o_empleados($cadena)
@@ -23,5 +60,4 @@ function buscar_empleado_o_empleados($cadena)
 	}
 	return false;
 }
-
 ?>

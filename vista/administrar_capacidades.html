@@ -1,39 +1,49 @@
-<!DOCTYPE html>
-<html>
-<head>
-<link rel="stylesheet" type="text/css" href="estilo.css">
-<meta charset="UTF-8">
-<title>Administrar Capacidades</title>
-</head>
-<body>
-	<table>
-		<tr>
-			<td>
-				<form method="post" action="">
-					<input type="hidden" name="etapa" value="administrar_capacidades" /> <select
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Strict//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<LINK rel="stylesheet" type="text/css" href="../vista/estilos.css">
+<TITLE>Administrar Capacidades</TITLE>
+</HEAD>
+<BODY>
+	<TABLE border="0">
+		<TR>
+			<TD>
+				<FORM method="post" action="">
+					<INPUT type="hidden" name="etapa" value="administrar_capacidades" /> <SELECT
 						name="puestos_a_remover" size="5">
-						<?php listar_puestos($puestos_que_puede_cubrir);?>
-					</select>
-					<p>
-						<input type="submit" value="Quitar" />
-					</p>
-				</form>
-			</td>
-			<td>
-				<form method="post" action="">
-					<input type="hidden" name="etapa" value="administrar_capacidades" /> <select
+						<?php listar_puestos($_SESSION['puestos_que_puede_cubrir']);?>
+					</SELECT>
+					<P>
+						<INPUT type="submit" value="Quitar" />
+					</P>
+				</FORM>
+			</TD>
+			<TD>
+				<FORM method="post" action="">
+					<INPUT type="hidden" name="etapa" value="administrar_capacidades" /> <SELECT
 						name="puestos_a_agregar" size="5">
-						<?php listar_puestos($puestos_que_no_puede_cubrir);?>
-					</select>
-					<p>
-						<input type="submit" value="Agregar" />
-					</p>
-				</form>
-			</td>
-		<tr>
-	</table>
-</body>
-</html>
+						<?php listar_puestos($_SESSION['puestos_que_no_puede_cubrir']);?>
+					</SELECT>
+					<P>
+						<INPUT type="submit" value="Agregar" />
+					</P>
+				</FORM>
+			</TD>
+		</TR>
+		<TR>
+		</TR>
+	</TABLE>
+	<FORM method="post" action="">
+		<INPUT type="hidden" name="etapa" value="almacenar_cambios" />
+		<fieldset>
+			<P>
+				<INPUT type="submit" value="Terminar" />
+			</P>
+		</fieldset>
+	</FORM>
+</BODY>
+</HTML>
 <?php
 function listar_puestos($lista){
     foreach ($lista as $puesto) {

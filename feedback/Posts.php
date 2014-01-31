@@ -12,6 +12,7 @@
 	</form>
 	<?php
 	$posts = file_get_contents("posts.txt");
+
 	echo nl2br($posts);
 
 	if(!empty($_POST["nombre"]) && !empty($_POST["comentario"]))

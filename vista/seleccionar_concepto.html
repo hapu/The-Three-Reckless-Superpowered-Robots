@@ -1,26 +1,30 @@
 <!DOCTYPE html>
-<html>
-<head>
-<link rel="stylesheet" type="text/css" href="estilo.css">
-<title>Escogiendo Fecha</title>
-</head>
-<body>
-	<form method="post" action="">
-		Fecha de Inicio <input type="date" name="fecha_inicio" value="mm/dd/aaaa"
-			onfocus="if(this.value =='mm/dd/aaaa') this.value='';" /> <BR>Fecha
-		de Fin <input type="date" name="fecha_fin" value="mm/dd/aaaa"
-			onfocus="if(this.value =='mm/dd/aaaa') this.value='';" /> <BR>
-		Concepto: <select name="concepto">
-			<option value="Permiso sin Goce de Sueldo">Permiso sin Goce de
-				Sueldo</option>
-			<option value="Permiso con Goce de Sueldo">Permiso con Goce de
-				Sueldo</option>
-			<option value="Comision Oficial">Comision Oficial</option>
-			<option value="Vacaciones">Vacaciones</option>
-			<option value="Capacitacion">Capacitacion</option>
-			<option value="Incapacitacion">Incapacitacion</option>
-		</select> <input type="hidden" name="etapa" value="validar_fecha" /> <input
-			type="submit" value="Enviar" />
-	</form>
-</body>
-</html>
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<LINK rel="stylesheet" type="text/css" href="../vista/estilos.css">
+<TITLE>Escogiendo Fecha</TITLE>
+</HEAD>
+<BODY>
+	<FORM method="post" action="">
+		<fieldset>
+			<legend>Detalles</legend>
+			Fecha de Inicio <INPUT type="date" name="fecha_inicio" value="mm/dd/aaaa"
+				onfocus="if(this.value =='mm/dd/aaaa') this.value='';" /> <BR>Fecha
+			de Fin <INPUT type="date" name="fecha_fin" value="mm/dd/aaaa"
+				onfocus="if(this.value =='mm/dd/aaaa') this.value='';" /> <BR>
+			Concepto: <SELECT name="concepto">
+				<OPTION value="Permiso sin Goce de Sueldo">Permiso sin Goce de
+					Sueldo</OPTION>
+				<OPTION value="Permiso con Goce de Sueldo">Permiso con Goce de
+					Sueldo</OPTION>
+				<OPTION value="Comision Oficial">Comision Oficial</OPTION>
+				<OPTION value="Vacaciones">Vacaciones</OPTION>
+				<OPTION value="Capacitacion">Capacitacion</OPTION>
+				<OPTION value="Incapacitacion">Incapacitacion</OPTION>
+			</SELECT> <INPUT type="hidden" name="etapa" value="validar_fecha" /> <INPUT
+				type="submit" value="Enviar" />
+		</fieldset>
+	</FORM>
+</BODY>
+</HTML>

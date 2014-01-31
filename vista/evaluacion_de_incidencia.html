@@ -1,38 +1,70 @@
-<!DOCTYPE html>
-<html>
-<head>
-<link rel="stylesheet" type="text/css" href="estilo.css">
-<title>Evaluando Propuesta</title>
-</head>
-<body>
-	<form method="post" action="">
-		<?php
-		if($empleados_capaces === false)
-			echo '<input type="hidden" name="etapa" value="almacenar_incidencia" />';
-		else
-			echo '<input type="hidden" name="etapa" value="evaluacion_de_incidencia" />';
-		?>
-		<?php
-		if($empleados_capaces !== false)
-		{
-			echo '<select name="empleado" size="5">';
-			foreach ($empleados_capaces as $empleado) {
-				echo '<option value="' . $empleado->emp_id . '">' . $empleado->emp_id  . ' ' . $empleado->emp_nombre . '<BR> ' . $empleado->emp_puesto . ' ' . $empleado->pst_nombre . ' ' . $empleado->emp_incidencias . ' ' . '</option>';
-			}
-			echo '</select>';
-		}
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Strict//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<LINK rel="stylesheet" type="text/css" href="../vista/estilos.css">
+<TITLE>Evaluando Propuesta</TITLE>
+</HEAD>
+<BODY>
+	<FORM method="post" action="">
+		<fieldset>
+			<?php imprimir_hidden($pst_id); ?>
+			<SELECT name="empleado" size="5">
+				<OPTGROUP style="color: #87A96B;" label="Capaces:">
+					<?php listar_empleados($empleados_capaces); ?>
+				</OPTGROUP>
+				<OPTGROUP style="color: #C95A49;" label="Incapaces:">
+					<?php listar_empleados($empleados_incapaces); ?>
+				</OPTGROUP>
+			</SELECT>
+			<P>
+				<?php imprimir_boton($pst_id); ?>
+			</P>
+		</fieldset>
+	</FORM>
+	<FORM method="post" action="">
+		<INPUT type="hidden" name="etapa" value="evaluacion_de_incidencia" /> <INPUT
+			type="hidden" name="empleado" value="-1" />
+		<P>
+			<INPUT type="submit" value="Deshacer" />
+		</P>
+	</FORM>
+	<?php listar_incidentes($_SESSION['incidentes']); ?>
+</BODY>
+</HTML>
+<?php
+function imprimir_boton($puesto_actual)
+{
+	if($puesto_actual == '00000000')
+		echo '<INPUT type="submit" value="Terminar" />';
+	else
+		echo '<INPUT type="submit" value="Seleccionar" />';
+}
 
-		?>
-		<table>
-			<?php
-			foreach ($_SESSION['incidentes'] as $empleado) {
-				echo '<tr><td>' . $empleado->id . '</td><td> ' . $empleado->nombre . '</td><td>' . $empleado->puesto .'</td><tr>';
-			}
-			?>
-		</table>
-		<p>
-			<input type="submit" value="Enviar" />
-		</p>
-	</form>
-</body>
-</html>
+function imprimir_hidden($puesto_actual)
+{
+	if($puesto_actual == '00000000')
+		echo '<input type="hidden" name="etapa" value="almacenar_incidencia" />';
+	else
+		echo '<input type="hidden" name="etapa" value="evaluacion_de_incidencia" />';
+}
+
+function listar_empleados($lista){
+	foreach ($lista as $key => $empleado) {
+		echo '<option value="' . $empleado->emp_id. '">'
+		. $empleado->emp_id . ' | '
+		. $empleado->emp_nombre . ' | '
+		. $empleado->pst_id . ' | '
+		. $empleado->pst_nombre . ' | '
+		. $empleado->emp_incidencias . '</option>
+		';
+	}
+}
+
+function listar_incidentes($lista){
+	echo "<TABLE>";
+	foreach ($lista as $empleado)
+		echo '<tr><td>' . $empleado->emp_nombre . '</td><td> ' . $empleado->emp_id . '</td><td>' . $empleado->emp_puesto .'</td><tr>';
+	echo "</TABLE>";
+}
+?>

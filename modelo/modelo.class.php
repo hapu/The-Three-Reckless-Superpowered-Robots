@@ -53,6 +53,19 @@ class Modelo
 	}
 
 
+	public static function verificar_usuario($usuario, $contraseña)
+	{
+		$query = "SELECT
+		usu_id, usu_empleado, usu_nombre
+		FROM
+		Usuario
+		WHERE
+		usu_nombre = '$usuario' AND usu_password = '$contraseña'";
+
+		$resultado = self::consulta($query);
+
+		return $resultado;
+	}
 
 	// 	Busquedas
 	/**
