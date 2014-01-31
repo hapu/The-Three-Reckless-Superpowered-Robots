@@ -1,0 +1,157 @@
+#Los sucesos fortuitos tienden a suceder todos juntos.
+#Si algo no puede salir mal, saldrá mal. 
+#Si una serie de sucesos puede salir mal, saldrá mal en la peor secuencia posible.
+#Después de que las cosas hayan ido de mal en peor, el ciclo se repetirá.
+#Nada es tan malo nunca como para que no pueda empeorar.
+#No hay tarea tan simple que no pueda hacerse mal.
+#No hay nada tan simple para explicar, que no exista una persona tan estúpida que no pueda entender.
+#No hay nada que deba ser cambiado pues si lo cambias pasara a ser algo que ya haya sido. 
+#Si el Cerebro Humano fuera tan simple que se pudiera entender, nosotros seriamos tan estúpidos que no podríamos entenderlo.
+#Las posibilidades de que algo vaya mal es proporcional a la complejidad de la gestion.
+#Las cosas te saldrán mal, cuando no estás seguro de lo que haces y crees que te van a salir mal.
+#Si algo te puede salir mal, te va a salir mal si lo piensas. 
+#Si estudias para un examen, seguramente suspenderás y si no estudias, quizá también suspendas.
+#Cuando tienes un antojo de comida, no lo encontrarás en la alacena de tu casa.
+#Cuando tienes hambre, no encontrarás nada de comida en la alacena de tu casa.
+#Cuando algo que puede salir mal sale bien, quiere decir que era mejor que saliera mal.
+#Del libro mas solicitado en la biblioteca, solo existe un ejemplar.
+#La información que uno lee, recuerda donde está ubicada y cree puede ser usada, jamás es solicitada.
+#Si falta una página, adivina dónde estará la información que necesitas
+#El momento en el que llegan mas usuarios a una biblioteca, es aquel en el cual el bibliotecario está ocupado y por lo tanto molesto.
+#Cuando piden una información específica y sabes en que libro esta, la página esta arrancada.
+#Si estas distraído y llega un usuario que no te simpatiza mucho a pedirte una tijera aunque no quieras hacerlo, lamentablemente tienes una tijera en tus manos.
+Extensión: Aplica a reglas, borradores y sacapuntas. 
+#Si tienes que hacer varias investigaciones, por lo común, olvidas un utensilio clave para desarrollar tu investigación.
+Corolario: si anotaste la investigación en una hoja cualquiera, seguro era en una de un cuaderno diferente.
+#Si llegas preciso a realizar una investigación, seguro no llevas lápices.
+#El tiempo que tarda en cerrar una biblioteca es inversamente proporcional al tamaño de la tarea que debes hacer.
+#Si solo vas a la biblioteca por una tarea lo más seguro es que lleves un cuaderno diferente.
+#El tamaño del libro que te entrega el bibliotecario es directamente desproporcional al tamaño de tu tarea.
+Explicación: Mientras más pequeña es tu tarea, mas grande es el libro.
+#Cuando llegas a una biblioteca a leer, nunca sabes que quieres leer.
+Corolario: El bibliotecario tampoco.
+#El vidrio caliente tiene la misma apariencia que el vidrio frío. 
+#Cuando no sepa que es lo que esta haciendo, hágalo con esmero y primor. 
+#El trabajo en equipo es esencial. Le permitirá echarle la culpa al otro. 
+#La ciencia es verídica, no deje que le engañen los hechos. 
+#No hay nada que perfeccione tanto una innovación como la falta de control. 
+#Cualquier problema técnico se puede solucionar si se cuenta con suficiente tiempo y dinero. 
+#Nunca se cuenta con suficiente tiempo y dinero.
+#Si la repetición del experimento puede plantear problemas, hágalo sólo una vez.
+#Si se requiere un ajuste en línea recta, halle solamente dos puntos de referencia.  
+#Es mejor resolver un problema con una aproximación grosera y conocer la verdad, 10 por 100 más o menos, que exigir una solución exacta y desconocer la verdad.
+#Una falsedad práctica y fácil de entender es más útil que una verdad compleja e incomprensible. 
+#La línea recta no existe.
+#Cualquier persona que haga una contribución significativa en cualquier campo y permanezca en este campo el tiempo suficiente, se convierte en un obstáculo para su progreso y esto es directamente proporcional a la importancia de su contribución original.
+#Si un científico descubre un hecho publicable, éste pasará a ser el centro de su teoría. 
+#Y, a la vez, su teoría se convertirá en el centro de todo su pensamiento científico. 
+#En cualquier serie de cálculos, los errores tienden a aparecer justo en el punto opuesto a aquel en el que usted empieza a comprobar si existen errores. 
+#Lo único que existe son los errores. 
+#El error de un hombre es la información de otro.
+#Errar es humano, pero para liar las cosas de verdad, hace falta un ordenador.
+#De todas las cosas que se pueden hacer con un ordenador, las más inútiles son las más divertidas. 
+#Un programa de ordenador hace lo que usted le ordena que haga, no lo que quiere usted que haga. 
+#Los archivos de apoyo nunca están completos. 
+#Los fallos de software se pueden corregir sólo cuando la industrias considera que se ha quedado obsoleto. 
+#Cuando archive algo en la memoria, acuérdese de donde lo guardo. 
+#No trate nunca de verificar una condición de error que no sepa manejar.
+#Si hay alguna posibilidad de que las cosas salgan mal, saldrán mal. 
+#Si la tostada se cae siempre será por el lado de la mantequilla.
+#Sonríe... mañana será peor.
+#La ayuda de Windows nunca te ayudará.
+#Cuando las cosas vayan bien, algo habrá que haga que vayan mal.
+#Cuando parece que ya nada puede ir peor, empeora.
+#Cuando le parezca que las cosas van mejor, es que se le ha pasado algo por alto.
+#Si la ley de murphy puede salir mal, lo hará. 
+#Todo lo que empieza bien, acaba mal. Todo lo que empieza mal, acaba peor.
+#Si la asignatura que más le apetecía hacer tenía un número límite de n estudiantes, usted será el n+1 que solicitó matricularse.
+#Los horarios se elaboraran con el único y exclusivo objeto de que los estudiantes pierdan el máximo tiempo posible entre las clases.
+#Si, por casualidad, consigue tener dos clases seguidas, se impartirán en los dos edificios más distantes entre sí de todo el recinto universitario. 
+#Si para hacer una asignatura, que le apetece mucho necesita estudiar otra previamente, esta última sólo se ofrecerá durante el cuatrimestre siguiente a la deseada.
+#Las pilas de la calculadora de bolsillo, que han durado todo el curso, se agotarán durante el examen final de matemáticas.
+Si lleva pilas de recambio, serán defectuosos.
+#En su examen final más difícil, la compañera de clase más maciza y atractiva se sentará a su lado por primera vez en todo el curso. 
+#Cuando repase sus apuntes antes de un examen, se dará cuenta de que lo más importante es ilegible. 
+#Cuanto más haya estudiado para un examen, menos seguro estará de cual es la respuesta que le piden.
+#El 80 por 100 del examen final está extraído de la clase a la que faltó y del libro que no ha leído.
+#La noche antes del parcial de Historia, el profesor de Biología le mandará que se lea doscientas páginas sobre insectos.
+#Todos los profesores dan por sentado que lo único que usted tiene que hacer es estudiar su asignatura. 
+#Si tiene que hacer un examen en el que se pueden usar libros, se le olvidará llevarlos. 
+#Si tiene que redactar un trabajo en casa, se le olvidará donde vive. 
+#A final de curso se acordará de que se había matriculado en una asignatura... y nunca ha ido a clase.
+#No lo comprenderá hasta después del examen. 
+#La única asignatura que le queda para licenciarse no se impartirá durante el segundo cuatrimestre.
+#Cuanto más general sea el título del curso, menos aprenderá en él.
+#Cuanto más específico sea, menos posibilidades tendrá de poder aplicarlo después.
+#El libro o la revista fundamental para terminar su trabajo de fin de curso será el único que no esté en la biblioteca. 
+#Si no falta, le habrán arrancado las páginas más importantes.
+#No podrá determinar la fuente de la cita más valiosa.
+#La fuente de la cita que usted olvidó consignar, aparecerá en la crítica más desfavorable a su trabajo.
+#Cuando un estudiante le pregunte por segunda vez si ya ha leído su resumen del libro, quiere decir que él no lo había leído.
+#Si la asistencia diaria a clase es obligatoria, un examen anunciado producirá un mayor absentismo. Si es opcional, verá caras que no había visto nunca antes.
+#Nunca se puede hacer solamente una cosa.
+#No hay mejor momento que el presente para que retrase lo que no quiere hacer.
+#Cualquier cosa que vale la pena hacer, ayer también valía la pena hacerla.
+#Cuanto más complicado y grandioso sea un plan, mayores serán las posibilidades de que se vaya al traste.
+#Los trabajos sencillos siempre se dejan para después, porque ya habrá tiempo de hacerlos.
+#La suposición es la madre de todas las pifias.
+#Mida con micrómetro. Marque con tiza. Corte con hacha.
+#Un proyecto de trabajo se expande hasta llenar todo el espacio disponible.
+#No importa lo grande que sea el espacio. Si hay dos proyectos que deben hacerse a la vez, los dos requerirán la misma porción de espacio de trabajo.
+#La llave inglesa o el taladro que usted necesite serán precisamente los que falten en la caja de herramientas.
+#Para la mayor parte de los montajes hacen falta tres manos.
+#Las tuercas sobrantes nunca ajustan con los tornillos sobrantes.
+#Cuanto más cuidadosamente se planifique un proyecto, mayor confusión se producirá cuando algo falle.
+#Si no se ha roto, no lo podrá arreglar, Guarde todas las piezas.
+#Los orificios de acceso tendrán medio milímetro menos de diámetro.
+#Los que tengan el diámetro adecuado, no estarán en el sitio que les corresponda.
+#Si fuera más barato comprar uno nuevo, la empresa insistiría en arreglar el viejo.
+#Si golpea al mismo tiempo dos teclas de la máquina de escribir, la letra que sale en el papel es la otra.
+#El único momento del día en que uno se apoya cómodamente en el respaldo de la silla y se relaja es cuando el jefe se da una vuelta por la oficina.
+#Es más fácil hacer preguntas estúpidas que corregir errores estúpidos. 
+#La función primaria de la ingeniería del diseño es poner las cosas difíciles al fabricantes e imposibles a los de mantenimiento.
+#En cualquier circuito, el componente que tenga menor duración se instalará en el punto menos accesible.
+#Cualquier circuito de diseño debe tener, por lo menos, una pieza obsoleta, dos que sean imposibles de encontrar y tres que se encuentren aún en periodo de prueba.
+#El ingeniero del proyecto cambiará los planos en el último momento.
+Los cambios no aparecerán en el manual de funcionamiento.
+#Las cartas importantes que no tienen faltas, engendrarán varias cuando estén en el correo.
+#Los errores correspondientes aparecerán en la carta mientras la esté leyendo el jefe.
+#Las máquinas de la oficina, que funcionan perfectamente en las horas normales de trabajo, se descompondrán en cuanto vaya de tapadillo por la noche y las utilice para asuntos personales.
+#Las máquinas que se hayan roto, funcionarán perfectamente en cuanto aparezca el técnico a repararlas.
+#Los sobres y sellos que no se pegan cuando se chupan, se quedan adheridos a cualquier cosa cuando menos se desea.
+#Los papeles vitales demostrarán su vitalidad moviéndose espontáneamente desde el sitio en el que usted los dejó hasta donde no se puedan encontrar.
+#La última persona que se marchó o despidieron de la empresa, será la que tenga la culpa de que todo vaya mal... hasta que despidan a otra.
+#El que duda, probablemente tiene razón.
+#Si le dan dos órdenes contradictorias, obedezca las dos.
+#El número de enfermedades menores entre los empleados es inversamente proporcional a la salud de la empresa.
+#Si lo archiva, sabrá donde está, pero nunca le hará falta. Si no lo archiva, lo necesitará pero nunca sabrá donde se encuentra.
+#El tiempo libre del que puede disponer de una forma imprevista, lo malgastará inevitablemente.
+#Cuanto más eficiente se sea para llegar tarde, menos eficiente se será para todo lo demás.
+#Cuanto más despacio se trabaja, menos errores se cometen.
+#No vaya nunca por el pasillo de su empresa sin llevar un papel en la mano.
+#No negocie nada nunca antes de las diez de la mañana ni después de las cuatro de la tarde. Antes de las diez, pensarán que está muy impaciente y después de las cuatro, que está desesperado.
+#Si hay un documento confidencial, alguien se lo dejará en la fotocopiadora.
+#El currículum ideal llegará a sus manos un día después de que se haya cubierto la plaza.
+#Dé las vueltas que dé antes de entrar en el ascensor, los botones siempre estarán a sus espalda.
+#En cuanto deje la cartera en el suelo, llegará el ascensor.
+#Vale la pena intrigar para ser portador de buenas noticias.
+#No esté en el edificio cuando lleguen las malas noticias. 
+#Si le hace a alguien un favor, le tendrá que hacer muchos más.
+#Es difícil elevarse como las águilas cuando se trabaja con pavos.
+#Los nuevos sistemas generan nuevos problemas. Corolario.
+#No es aconsejable multiplicar innecesariamente el número de sistemas.
+#Los sistemas tienden a crecer y, a medida que lo hacen, se pasan de la raya. 
+#Formulaciones alternativas:
+1. Los sistemas complicados producen resultados inesperados.
+2. No se puede predecir el comportamiento global de los grandes sistemas.
+#Un sistema grande, que se ha creado aumentando las dimensiones de un sistema pequeño, no se comporta de la misma manera que el sistema más pequeño.
+#Las personas que trabajan con sistemas, no hacen lo que los sistemas dicen que están haciendo.
+#El propio sistema no hace lo que dice que está haciendo.
+#Está demostrado que un sistema complejo, que funciona, se ha creado siempre a partir de un sistema simple que funciona. 
+#Los sistemas complejos tienden a oponerse a sus propias funciones.
+#El tiempo necesario para rectificar una situación es inversamente proporcional al tiempo que se tardó en crearla. Ejemplo número 1: Hace falta más tiempo para pegar un florero que para romperlo.
+Ejemplo número 2: Hace falta más tiempo para perder x kilos que para ganarlo. 
+#El plato que le llamó la atención desde que se puso usted en la cola se lo llevará el que va delante de usted.
+#Si el titular de un periódico es una pregunta, la respuesta es "no".
+#La otra cola es más rápida.
+#Si cambia de cola, la que acaba de dejar empezará a avanzar más deprisa que la nueva.

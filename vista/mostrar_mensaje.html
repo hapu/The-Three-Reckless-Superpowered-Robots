@@ -1,0 +1,20 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Strict//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<LINK rel="stylesheet" type="text/css" href="../vista/estilos.css">
+<TITLE>Mensaje</TITLE>
+</HEAD>
+<BODY>
+	<TABLE>
+		<TR valign="middle" height="250em">
+			<TH><P style="text-align: left; padding: 0.5em">
+					<?php echo $_SESSION['titulo_de_mensaje']; ?>
+				</P>
+				<P style="padding: 0.5em; font-style: italic; font-weight: normal;">
+					<?php echo $_SESSION['mensaje']; ?>
+				</P></TH>
+		</TR>
+	</TABLE>
+</BODY>
+</HTML>

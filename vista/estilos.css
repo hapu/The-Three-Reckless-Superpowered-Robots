@@ -1,0 +1,101 @@
+@CHARSET "UTF-8";
+/*
+	C95A49 Rojo
+	5F9EA0 Azul
+	87A96B Verde
+	E3DAC9 Cafe
+  */
+BODY {
+	font-family: arial, helvetica, sans-serif;
+	font-size: 1.5em;
+	background-color: #5f9ea0;
+	color: #ffffff;
+	font-weight: normal;
+	padding: 0.5em;
+}
+
+#fondo_rojo{
+	background-color: #C95A49;
+}
+
+IFRAME {
+	border: 0;
+}
+
+FIELDSET,LEGEND {
+	border: 0em;
+	border-style: hidden;
+}
+
+FIELDSET {
+	background-color: #87a96b;
+}
+
+LEGEND {
+	background-color: #c95a49;
+}
+
+A {
+	display: block;
+	width: 10em;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+	color: #ffffff;
+	text-decoration: none;
+	text-align: center;
+	font-weight: bold;
+	padding-top: 0.5em
+}
+
+A:LINK,A:VISITED {;
+	background-color: #c95a49;
+}
+
+A:HOVER,A:ACTIVE {
+	background-color: #87a96b;
+}
+
+TABLE {
+	width: 100%;
+}
+
+TABLE,TD,TR,TH {
+	background-color: #87a96b;
+	border: 0.0em;
+	border-style: solid;
+	border-color: #e3dac9;
+	border-collapse: collapse;
+}
+
+UL {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	padding: 0;
+}
+
+LI {
+	float: left;
+}
+
+P {
+	padding: 0.0em;
+}
+
+INPUT {
+	font-style: italic;
+	font-size: 1em;
+	width: 100%;
+}
+
+OPTION {
+	font-style: italic;
+	font-size: 1em;
+}
+
+SELECT {
+	background-color: #e3dac9;
+	font-size: 1em;
+	width: 100%;
+}

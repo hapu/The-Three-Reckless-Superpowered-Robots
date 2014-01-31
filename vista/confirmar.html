@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Strict//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<LINK rel="stylesheet" type="text/css" href="../vista/estilos.css">
+<TITLE>Confirmacion</TITLE>
+</HEAD>
+<BODY>
+	<?php mostrar_cambios(); ?>
+	<UL>
+		<LI>
+			<FORM method="post" action="">
+				<INPUT type="hidden" name="etapa" value="confirmacion" /> <INPUT
+					type="hidden" name="accion" value="cancelar" /> <INPUT type="submit"
+					value="Cancelar" />
+			</FORM>
+		</LI>
+		<LI>
+			<FORM method="post" action="">
+				<INPUT type="hidden" name="etapa" value="confirmacion" /> <INPUT
+					type="hidden" name="accion" value="aceptar" /> <INPUT type="submit"
+					value="Aceptar" />
+			</FORM>
+		</LI>
+	</UL>
+</BODY>
+</HTML>
